@@ -1,0 +1,196 @@
+---
+import "../styles/global.css"
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"><link href="https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap" rel="stylesheet">
+		<slot name="head" />
+		<title>{title}</title>
+		<style>
+			:where([class^="ri-"])::before { content: "\f3c2"; }
+		</style>
+	</head>
+	<body>
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	/* Scroll Animation Styles */
+	/* Fade In */
+	.scroll-animate.fade-in {
+		opacity: 0;
+		transition: opacity 0.6s ease-out;
+	}
+
+	.scroll-animate.fade-in.visible {
+		opacity: 1;
+	}
+
+	/* Slide Up */
+	.scroll-animate.slide-up {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	}
+
+	.scroll-animate.slide-up.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Scale In */
+	.scroll-animate.scale-in {
+		opacity: 0;
+		transform: scale(0.9);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	}
+
+	.scroll-animate.scale-in.visible {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	/* Stagger children */
+	.scroll-animate.stagger-children > * {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+	}
+
+	.scroll-animate.stagger-children.visible > * {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.scroll-animate.stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; }
+	.scroll-animate.stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; }
+	.scroll-animate.stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; }
+	.scroll-animate.stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; }
+	.scroll-animate.stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; }
+	.scroll-animate.stagger-children.visible > *:nth-child(6) { transition-delay: 0.6s; }
+	.scroll-animate.stagger-children.visible > *:nth-child(7) { transition-delay: 0.7s; }
+	.scroll-animate.stagger-children.visible > *:nth-child(8) { transition-delay: 0.8s; }
+</style>
+
+<script id="smooth-scrolling">
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll('a[href^="#"]');
+        links.forEach((link) => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute("href");
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        root: null,
+        rootMargin: "-50px", // Trigger 50px before element enters viewport
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.classList.contains("visible")) {
+                entry.target.classList.add("visible");
+
+                // Trigger counter animation if this element has a counter
+                const counterEl = entry.target.querySelector("[data-counter]");
+                if (counterEl && !counterEl.hasAttribute("data-animated")) {
+                    counterEl.setAttribute("data-animated", "true");
+                    animateCounter(counterEl);
+                }
+
+                // Unobserve after animation triggers (performance optimization)
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with scroll animation classes
+    const animatedElements = document.querySelectorAll(".scroll-animate");
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Counter animation function
+	// @ts-expect-error
+    function animateCounter(element) {
+        const target = element.getAttribute("data-counter");
+        const duration = 2000; // 2 seconds
+        const frameDuration = 1000 / 60; // 60 FPS
+        const totalFrames = Math.round(duration / frameDuration);
+        let frame = 0;
+
+        // Parse the target value (handle suffixes like + and K)
+        let suffix = "";
+        let numericTarget = target;
+
+        if (target.includes("+")) {
+            suffix = "+";
+            numericTarget = target.replace("+", "");
+        }
+
+        if (numericTarget.includes("K")) {
+            suffix = "K" + suffix;
+            numericTarget = numericTarget.replace("K", "");
+        }
+
+        const targetValue = parseFloat(numericTarget);
+
+        const counter = setInterval(() => {
+            frame++;
+            const progress = frame / totalFrames;
+
+            // Easing function (ease-out)
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const currentValue = targetValue * easeOut;
+
+            // Format the display value
+            let displayValue;
+            if (suffix.includes("K")) {
+                displayValue = currentValue.toFixed(1);
+            } else if (target.includes(".")) {
+                displayValue = currentValue.toFixed(1);
+            } else {
+                displayValue = Math.floor(currentValue);
+            }
+
+            element.textContent = displayValue + suffix;
+
+            if (frame >= totalFrames) {
+                clearInterval(counter);
+                element.textContent = target; // Ensure final value is exact
+            }
+        }, frameDuration);
+    }
+</script>

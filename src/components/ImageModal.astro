@@ -1,0 +1,202 @@
+---
+// Image Modal Component - Displays full-size images with navigation
+---
+
+<div class="modal-backdrop hidden" id="image-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-container">
+    <button class="close-button" aria-label="Close modal">×</button>
+    <button class="nav-button prev" aria-label="Previous image">‹</button>
+    <img class="modal-image" alt="" />
+    <button class="nav-button next" aria-label="Next image">›</button>
+    <div class="image-counter" aria-live="polite"></div>
+    <p class="image-caption hidden"></p>
+  </div>
+</div>
+
+<style>
+  /* Backdrop */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-backdrop.hidden {
+    display: none;
+  }
+
+  /* Container */
+  .modal-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+
+  /* Modal Image */
+  .modal-image {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: white;
+    border-radius: 9999px;
+    font-size: 2rem;
+    line-height: 1;
+    color: #374151;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+  }
+
+  .close-button:hover {
+    background-color: #F3F4F6;
+  }
+
+  /* Navigation Buttons */
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 9999px;
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+  }
+
+  .nav-button:hover {
+    background-color: #F3F4F6;
+  }
+
+  .nav-button.prev { left: -4rem; }
+  .nav-button.next { right: -4rem; }
+
+  /* Responsive adjustments for mobile */
+  @media (max-width: 768px) {
+    .nav-button.prev { left: 0.5rem; }
+    .nav-button.next { right: 0.5rem; }
+    .close-button { top: 0.5rem; right: 0.5rem; }
+  }
+
+  /* Image Counter */
+  .image-counter {
+    position: absolute;
+    bottom: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .image-counter { bottom: 0.5rem; }
+  }
+
+  /* Caption */
+  .image-caption {
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+    max-width: 600px;
+  }
+
+  .image-caption.hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+  let images: any[] = [];
+  const modal = document.getElementById('image-modal');
+  let lastFocusedElement: HTMLElement | null = null;
+
+  function openModal(index: number, galleryImages: any[]) {
+    lastFocusedElement = document.activeElement as HTMLElement;
+    currentIndex = index;
+    images = galleryImages;
+    updateModalImage();
+    document.body.style.overflow = 'hidden';
+    modal?.classList.remove('hidden');
+    modal?.querySelector<HTMLButtonElement>('.close-button')?.focus();
+  }
+
+  function closeModal() {
+    modal?.classList.add('hidden');
+    document.body.style.overflow = '';
+    lastFocusedElement?.focus();
+  }
+
+  function navigateImage(direction: number) {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    updateModalImage();
+  }
+
+  function updateModalImage() {
+    const img = modal?.querySelector<HTMLImageElement>('.modal-image');
+    const counter = modal?.querySelector('.image-counter');
+    const caption = modal?.querySelector('.image-caption');
+
+    if (!img || !counter || !caption) return;
+
+    img.src = images[currentIndex].fullSize;
+    img.alt = images[currentIndex].alt;
+    counter.textContent = `${currentIndex + 1} / ${images.length}`;
+
+    if (images[currentIndex].caption) {
+      caption.textContent = images[currentIndex].caption;
+      caption.classList.remove('hidden');
+    } else {
+      caption.classList.add('hidden');
+    }
+
+    // Preload adjacent images
+    preloadImage(currentIndex - 1);
+    preloadImage(currentIndex + 1);
+  }
+
+  function preloadImage(index: number) {
+    if (index >= 0 && index < images.length) {
+      const img = new Image();
+      img.src = images[index].fullSize;
+    }
+  }
+
+  // Event Listeners
+  modal?.querySelector('.close-button')?.addEventListener('click', closeModal);
+  modal?.querySelector('.prev')?.addEventListener('click', () => navigateImage(-1));
+  modal?.querySelector('.next')?.addEventListener('click', () => navigateImage(1));
+
+  // Click outside to close
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (modal?.classList.contains('hidden')) return;
+
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') navigateImage(-1);
+    if (e.key === 'ArrowRight') navigateImage(1);
+  });
+
+  // Expose openModal globally for gallery thumbnails to use
+  (window as any).openImageModal = openModal;
+</script>

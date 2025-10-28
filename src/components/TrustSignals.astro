@@ -1,0 +1,32 @@
+---
+const { isAlternate } = Astro.props
+---
+
+<div class="text-center mb-16 scroll-animate fade-in" class:list={[isAlternate]}>
+    <h2 class="text-4xl font-bold text-gray-900 secondary:text-white mb-4">
+        Trusted by Thousands
+    </h2>
+    <p class="text-xl text-gray-600 secondary:text-white">
+        Our commitment to excellence has earned us the trust of clients
+        across various industries.
+    </p>
+</div>
+<!-- Stats -->
+<div class="grid md:grid-cols-4 gap-8 mb-16" class:list={[isAlternate]}>
+    <div class="text-center scroll-animate scale-in">
+        <div class="text-4xl font-bold text-primary secondary:text-white mb-2" data-counter="15+">15+</div>
+        <div class="text-gray-600 secondary:text-white">Years Experience</div>
+    </div>
+    <div class="text-center scroll-animate scale-in">
+        <div class="text-4xl font-bold text-primary secondary:text-white mb-2" data-counter="500+">1000+</div>
+        <div class="text-gray-600 secondary:text-white">Happy Clients</div>
+    </div>
+    <div class="text-center scroll-animate scale-in">
+        <div class="text-4xl font-bold text-primary secondary:text-white mb-2" data-counter="10K+">10K+</div>
+        <div class="text-gray-600 secondary:text-white">Cleanings Completed</div>
+    </div>
+    <div class="text-center scroll-animate scale-in">
+        <div class="text-4xl font-bold text-primary secondary:text-white mb-2" data-counter="4.9">4.9</div>
+        <div class="text-gray-600 secondary:text-white">Average Rating</div>
+    </div>
+</div>

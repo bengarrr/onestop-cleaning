@@ -1,0 +1,194 @@
+---
+// Dynamic Service Detail Page - With tab support for services with sub-types
+import Layout from '../../layouts/Layout.astro';
+import TabNavigation from '../../components/TabNavigation.astro';
+import ServiceGallery from '../../components/ServiceGallery.astro';
+import CTASection from '../../components/CTASection.astro';
+import ImageModal from '../../components/ImageModal.astro';
+import Header from '../../components/Header.astro';
+import Navigation from '../../components/Navigation.astro';
+import { services } from '../../data/services';
+
+export function getStaticPaths() {
+  return services.map(service => ({
+    params: { service: service.id },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+
+const title = `${service.name} | One Stop Cleaning`;
+const description = service.shortDescription;
+---
+
+<Layout title={title}>
+  <meta name="description" content={description} slot="head" />
+  <meta property="og:title" content={title} slot="head" />
+  <meta property="og:description" content={description} slot="head" />
+  <meta property="og:image" content={service.previewGallery[0].fullSize} slot="head" />
+  <link rel="canonical" href={`https://onestopcleaning.com/services/${service.id}`} slot="head" />
+
+  <!-- RemixIcon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" slot="head" />
+
+  <!-- Hero Section -->
+  <section
+    class="relative min-h-[60vh] flex items-center"
+    style={`background-image: url('${service.previewGallery[0].fullSize}'); background-size: cover; background-position: center;`}
+  >
+    <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent"></div>
+    <div class="relative w-full px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-xl">
+              <i class={`${service.icon} text-4xl text-primary`}></i>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900">
+              {service.name}
+            </h1>
+          </div>
+          <p class="text-xl md:text-2xl text-gray-600 mb-8">
+            {service.tagline}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-colors text-center">
+              Get Quote
+            </a>
+            <a href="/contact" class="bg-white text-primary border-2 border-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-colors text-center">
+              Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab Navigation (only for services with sub-types) -->
+  {service.hasSubTypes && service.subTypes && (
+    <TabNavigation subTypes={service.subTypes} />
+  )}
+
+  <!-- Content Area -->
+  {service.hasSubTypes && service.subTypes ? (
+    // Tabbed Content for Services with Sub-Types
+    service.subTypes.map((subType, index) => (
+      <div
+        id={`${subType.id}-panel`}
+        class={`tab-content ${index !== 0 ? 'hidden' : ''}`}
+        role="tabpanel"
+        aria-labelledby={`${subType.id}-tab`}
+      >
+        <!-- Description Section -->
+        <section class="py-12 bg-white">
+          <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                  About {subType.name}
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  {subType.description}
+                </p>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold text-gray-900 mb-4">Features</h4>
+                <ul class="space-y-3">
+                  {subType.features.map(feature => (
+                    <li class="flex items-start">
+                      <span class="text-primary mr-2 text-xl font-bold">✓</span>
+                      <span class="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="bg-gray-50">
+          <ServiceGallery images={subType.gallery} title={`${subType.name} Gallery`} />
+        </section>
+      </div>
+    ))
+  ) : (
+    <!-- Standard Content for Services without Sub-Types -->
+    <>
+      <!-- Description Section -->
+      <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                About Our {service.name} Service
+              </h2>
+              <p class="text-gray-600 leading-relaxed text-lg mb-6">
+                {service.description}
+              </p>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-6">What We Offer</h3>
+              <ul class="space-y-4">
+                {service.features.map(feature => (
+                  <li class="flex items-start">
+                    <span class="text-primary mr-3 text-2xl font-bold">✓</span>
+                    <span class="text-gray-600 text-lg">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section class="bg-gray-50">
+        <ServiceGallery images={service.gallery} title="Our Work" />
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+          <h3 class="text-3xl font-bold text-gray-900 text-center mb-12">
+            What Our Customers Say
+          </h3>
+          <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+            <div class="flex text-yellow-400 mb-4 text-2xl">
+              {Array(service.testimonial.rating).fill('★').join('')}
+            </div>
+            <p class="text-gray-700 text-xl italic mb-6 leading-relaxed">
+              "{service.testimonial.quote}"
+            </p>
+            <div>
+              <div class="font-semibold text-gray-900 text-lg">
+                {service.testimonial.author}
+              </div>
+              <div class="text-gray-600">
+                {service.testimonial.role}
+                {service.testimonial.company && `, ${service.testimonial.company}`}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <!-- CTA Section -->
+  <CTASection />
+
+  <!-- Image Modal -->
+  <ImageModal />
+</Layout>
+
+<style>
+  .tab-content {
+    transition: opacity 0.2s;
+  }
+
+  .tab-content.hidden {
+    display: none;
+  }
+</style>

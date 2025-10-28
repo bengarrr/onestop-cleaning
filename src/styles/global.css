@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "tailwindcss/utilities";
+
+@theme {
+    --color-primary: #57b5e7;
+    --color-secondary: #10B981;
+}
+
+@custom-variant secondary {
+    &:where(.secondary *) {
+        @slot;
+    }
+}
+
+.\!rounded-button {
+    border-radius: 8px !important
+}

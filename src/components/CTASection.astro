@@ -1,0 +1,68 @@
+---
+// CTA Section Component - Call-to-action section for contact
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryText?: string;
+  secondaryText?: string;
+}
+
+const {
+  title = "Ready to Get Started?",
+  subtitle = "Contact us today for a free quote and consultation.",
+  primaryText = "Get Free Quote",
+  secondaryText = "Schedule Consultation"
+} = Astro.props;
+---
+
+<section class="cta-section">
+  <div class="max-w-4xl mx-auto text-center px-6">
+    <h2 class="text-4xl font-bold text-gray-900 mb-4">{title}</h2>
+    <p class="text-xl text-gray-600 mb-8">{subtitle}</p>
+    <div class="cta-buttons">
+      <a href="/contact" class="primary-button">
+        {primaryText}
+      </a>
+      <a href="/contact" class="secondary-button">
+        {secondaryText}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @reference "../styles/global.css";
+
+  .cta-section {
+    background-color: #F9FAFB;
+    padding: 5rem 1.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .primary-button {
+    @apply bg-primary hover:bg-primary/70;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .secondary-button {
+    @apply text-primary hover:text-white border-primary border-2 bg-white hover:bg-primary transition-colors;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+
+</style>

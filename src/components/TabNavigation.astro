@@ -1,0 +1,169 @@
+---
+// Tab Navigation Component - Tab interface for services with sub-types
+import type { ServiceSubType } from '../data/services';
+
+interface Props {
+  subTypes: ServiceSubType[];
+}
+
+const { subTypes } = Astro.props;
+---
+
+<div class="tab-navigation" role="tablist" aria-label="Service options">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="tab-container">
+      {subTypes.map((subType, index) => (
+        <button
+          class={`tab-button ${index === 0 ? 'active' : ''}`}
+          data-tab={subType.id}
+          role="tab"
+          aria-selected={index === 0 ? 'true' : 'false'}
+          aria-controls={`${subType.id}-panel`}
+          id={`${subType.id}-tab`}
+        >
+          {subType.name}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .tab-navigation {
+    background-color: white;
+    border-bottom: 2px solid #E5E7EB;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .tab-container {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .tab-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  .tab-button {
+    padding: 1rem 2rem;
+    font-weight: 600;
+    color: #6B7280;
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-size: 1rem;
+  }
+
+  .tab-button:hover {
+    color: rgb(59, 130, 246);
+    background-color: rgba(59, 130, 246, 0.05);
+  }
+
+  .tab-button.active {
+    color: rgb(59, 130, 246);
+    border-bottom-color: rgb(59, 130, 246);
+  }
+
+  .tab-button:focus {
+    outline: 2px solid rgb(59, 130, 246);
+    outline-offset: -2px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .tab-button {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.9375rem;
+    }
+  }
+</style>
+
+<script>
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  // Initialize from URL hash
+  function initializeFromHash() {
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+      const targetButton = document.querySelector(`[data-tab="${hash}"]`);
+      if (targetButton) {
+        switchTab(hash);
+      }
+    } else {
+      // Activate first tab by default
+      const firstTab = tabButtons[0]?.getAttribute('data-tab');
+      if (firstTab) {
+        switchTab(firstTab);
+      }
+    }
+  }
+
+  function switchTab(tabId: string) {
+    // Update buttons
+    tabButtons.forEach(button => {
+      const isActive = button.getAttribute('data-tab') === tabId;
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-selected', isActive.toString());
+    });
+
+    // Update content
+    tabContents.forEach(content => {
+      const contentId = content.id;
+      const shouldShow = contentId === `${tabId}-panel`;
+      content.classList.toggle('hidden', !shouldShow);
+    });
+
+    // Update URL hash without scrolling
+    history.replaceState(null, '', `#${tabId}`);
+  }
+
+  // Add click listeners
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      if (tabId) switchTab(tabId);
+    });
+  });
+
+  // Handle hash changes (browser back/forward)
+  window.addEventListener('hashchange', initializeFromHash);
+
+  // Initialize on page load
+  initializeFromHash();
+
+  // Keyboard navigation (arrow keys)
+  let currentTabIndex = 0;
+  const tabArray = Array.from(tabButtons);
+
+  tabButtons.forEach((button, index) => {
+    button.addEventListener('focus', () => {
+      currentTabIndex = index;
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.activeElement?.classList.contains('tab-button')) return;
+
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      currentTabIndex = (currentTabIndex + 1) % tabArray.length;
+      (tabArray[currentTabIndex] as HTMLElement).focus();
+      (tabArray[currentTabIndex] as HTMLElement).click();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      currentTabIndex = (currentTabIndex - 1 + tabArray.length) % tabArray.length;
+      (tabArray[currentTabIndex] as HTMLElement).focus();
+      (tabArray[currentTabIndex] as HTMLElement).click();
+    }
+  });
+</script>

@@ -1,0 +1,47 @@
+---
+// Services Index Page - Full-width alternating sections for all services
+import Layout from '../../layouts/Layout.astro';
+import ServiceSection from '../../components/ServiceSection.astro';
+import CTASection from '../../components/CTASection.astro';
+import ImageModal from '../../components/ImageModal.astro';
+import Header from '../../components/Header.astro';
+import Navigation from '../../components/Navigation.astro';
+import { services } from '../../data/services';
+
+const title = "Our Services | One Stop Cleaning";
+const description = "Explore our comprehensive range of professional cleaning services including carpet, upholstery, floor cleaning, window cleaning, and more.";
+---
+
+<Layout title={title}>
+  <meta name="description" content={description} slot="head" />
+  <meta property="og:title" content={title} slot="head" />
+  <meta property="og:description" content={description} slot="head" />
+  <meta property="og:type" content="website" slot="head" />
+
+  <!-- RemixIcon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" slot="head" />
+
+  <!-- Hero Section -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Our Cleaning Services
+      </h1>
+      <p class="text-xl text-gray-600">
+        Professional cleaning solutions tailored to your needs.
+        Explore our comprehensive range of services and see what our customers have to say.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Sections -->
+  {services.map((service, index) => (
+    <ServiceSection service={service} index={index} />
+  ))}
+
+  <!-- CTA Section -->
+  <CTASection secondaryText='Contact Us' />
+
+  <!-- Image Modal -->
+  <ImageModal />
+</Layout>

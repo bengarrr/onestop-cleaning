@@ -1,0 +1,418 @@
+---
+// About Page - One Stop Cleaning
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+import TrustSignals from '../components/TrustSignals.astro';
+
+const title = "About Us | One Stop Cleaning - Family-Owned Cleaning Services";
+const description = "Learn about One Stop Cleaning, a family-owned business providing professional cleaning services for 10+ years. Licensed, insured, and trusted by 500+ clients.";
+---
+
+<Layout>
+  <meta name="description" content={description} slot="head" />
+  <meta property="og:title" content={title} slot="head" />
+  <meta property="og:description" content={description} slot="head" />
+  <meta property="og:type" content="website" slot="head" />
+  <title slot="head">{title}</title>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-gradient"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About One Stop Cleaning</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        A family-owned business dedicated to providing exceptional cleaning services
+        with integrity, care, and professional excellence since 2015.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section A: Company Backstory -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Content (Left) -->
+        <div class="lg:order-1">
+          <div class="flex items-center mb-6">
+            <i class="ri-home-heart-line text-5xl text-[#57b5e7] mr-4"></i>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Story</h2>
+          </div>
+          <div class="space-y-4 text-lg text-gray-600 leading-relaxed">
+            <p>
+              Founded by the Macias family in 2015, One Stop Cleaning began with a simple vision:
+              to bring the same level of care and attention to our clients' spaces that we bring to our own homes.
+              What started with a single van and a commitment to excellence has grown into something we're truly proud of.
+            </p>
+            <p>
+              Over the years, we've grown from serving 5 local businesses to becoming the trusted cleaning partner
+              for over 500 satisfied residential and commercial clients. Our growth isn't just measured in numbers,
+              but in the relationships we've built and the trust our clients place in us every day.
+            </p>
+            <p>
+              With three generations of cleaning expertise in our family, we've learned that true excellence comes
+              from passion, dedication, and treating every space we clean with respect and care. This isn't just
+              a business for us—it's about creating clean, healthy environments where families and businesses can thrive.
+            </p>
+          </div>
+        </div>
+
+        <!-- Image (Right) -->
+        <div class="lg:order-2 relative">
+          <div class="rounded-xl bg-gray-200 w-full h-[500px] flex items-center justify-center overflow-hidden">
+            <i class="ri-team-fill text-9xl text-gray-400"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section B: Our Process -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Image (Left) -->
+        <div class="lg:order-1 relative">
+          <div class="rounded-xl bg-gray-300 w-full h-[500px] flex items-center justify-center overflow-hidden">
+            <i class="ri-tools-fill text-9xl text-gray-500"></i>
+          </div>
+        </div>
+
+        <!-- Content (Right) -->
+        <div class="lg:order-2">
+          <div class="flex items-center mb-6">
+            <i class="ri-list-check-2 text-5xl text-[#10B981] mr-4"></i>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Our Cleaning Process</h2>
+          </div>
+          <div class="space-y-4 text-lg text-gray-600 leading-relaxed mb-6">
+            <p>
+              We believe that exceptional cleaning starts with a thorough understanding of your unique needs.
+              Our process is designed to deliver consistent, high-quality results every single time.
+            </p>
+            <p>
+              From the initial consultation through completion and follow-up, we maintain the highest standards
+              of professionalism and attention to detail. Every step is carefully planned and executed to ensure
+              your complete satisfaction.
+            </p>
+          </div>
+
+          <!-- Features List -->
+          <div class="space-y-3">
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Detailed initial walkthrough</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Custom cleaning checklists</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Eco-friendly products</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Quality assurance inspections</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Satisfaction guarantee</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flare Element #1: Stats Banner -->
+  <section class="flare-element">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+
+      <TrustSignals isAlternate="secondary" />
+    <!-- <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="text-5xl font-bold text-white mb-2">10+</div>
+          <div class="text-white/90">Years in Business</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold text-white mb-2">500+</div>
+          <div class="text-white/90">Happy Clients</div>
+        </div>
+        <div>
+          <div class="text-5xl font-bold text-white mb-2">99%</div>
+          <div class="text-white/90">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div> -->
+  </section>
+
+  <!-- Section C: Why We're Trusted -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Content (Left) -->
+        <div class="lg:order-1">
+          <div class="flex items-center mb-6">
+            <i class="ri-shield-check-line text-5xl text-[#57b5e7] mr-4"></i>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Why Clients Trust Us</h2>
+          </div>
+          <div class="space-y-4 text-lg text-gray-600 leading-relaxed mb-6">
+            <p>
+              Trust is earned through consistent, reliable service and unwavering commitment to our clients' needs.
+              We've built our reputation on transparency, professionalism, and delivering on our promises.
+            </p>
+            <p>
+              Every member of our team is carefully selected, thoroughly trained, and held to the highest standards
+              of professionalism. We're fully licensed and insured, giving you complete peace of mind.
+            </p>
+          </div>
+
+          <!-- Features List -->
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#57b5e7] mr-3"></i>
+              <span>Licensed & Insured</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#57b5e7] mr-3"></i>
+              <span>Background-Checked Staff</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#57b5e7] mr-3"></i>
+              <span>Eco-Friendly Products</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#57b5e7] mr-3"></i>
+              <span>Flexible Scheduling</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#57b5e7] mr-3"></i>
+              <span>Transparent Pricing</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#57b5e7] mr-3"></i>
+              <span>100% Satisfaction Guarantee</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image (Right) -->
+        <div class="lg:order-2 relative">
+          <div class="rounded-xl bg-gray-200 w-full h-[500px] flex items-center justify-center overflow-hidden">
+            <i class="ri-award-fill text-9xl text-gray-400"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section D: Family-Run Business -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Image (Left) -->
+        <div class="lg:order-1 relative">
+          <div class="rounded-xl bg-gray-300 w-full h-[500px] flex items-center justify-center overflow-hidden">
+            <i class="ri-parent-fill text-9xl text-gray-500"></i>
+          </div>
+        </div>
+
+        <!-- Content (Right) -->
+        <div class="lg:order-2">
+          <div class="flex items-center mb-6">
+            <i class="ri-team-line text-5xl text-[#10B981] mr-4"></i>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">A Family That Cares</h2>
+          </div>
+          <div class="space-y-4 text-lg text-gray-600 leading-relaxed mb-6">
+            <p>
+              Being family-owned means we bring a personal touch to every job. We don't just clean your space—we
+              treat it with the same care and respect we would give our own family's home or business.
+            </p>
+            <p>
+              Our family values of honesty, integrity, and excellence are woven into everything we do. From the
+              first phone call to the completion of each service, you'll experience the difference that personal
+              attention and genuine care make.
+            </p>
+          </div>
+
+          <!-- Features List -->
+          <div class="grid md:grid-cols-2 gap-3">
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Family-owned and operated</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Personal oversight on every job</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Built on trust and integrity</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Long-term client relationships</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Community-focused</span>
+            </div>
+            <div class="flex items-center text-gray-600">
+              <i class="ri-check-line text-2xl text-[#10B981] mr-3"></i>
+              <span>Personalized service</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flare Element #2: Testimonial Banner -->
+  <section class="flare-element">
+    <div class="max-w-4xl mx-auto px-6 py-20 text-center">
+      <div class="text-3xl md:text-4xl font-bold text-white mb-6">
+        "The best cleaning service we've ever used. Professional, reliable, and they treat our office like it's their own."
+      </div>
+      <div class="text-white/90 text-lg">
+        — Sarah Johnson, Office Manager at Tech Solutions Inc.
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Signals Section -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose One Stop Cleaning</h2>
+        <p class="text-xl text-gray-600">The numbers that speak to our commitment to excellence</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Trust Signal 1 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-time-line text-5xl text-[#57b5e7] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">10+ Years</div>
+          <div class="text-gray-600 text-sm">Serving the community since 2015</div>
+        </div>
+
+        <!-- Trust Signal 2 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-user-smile-line text-5xl text-[#57b5e7] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">500+</div>
+          <div class="text-gray-600 text-sm">Satisfied residential and commercial clients</div>
+        </div>
+
+        <!-- Trust Signal 3 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-star-fill text-5xl text-[#57b5e7] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">99%</div>
+          <div class="text-gray-600 text-sm">Customer satisfaction rating</div>
+        </div>
+
+        <!-- Trust Signal 4 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-shield-check-line text-5xl text-[#57b5e7] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">Fully</div>
+          <div class="text-gray-600 text-sm">Licensed, bonded, and insured</div>
+        </div>
+
+        <!-- Trust Signal 5 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-leaf-line text-5xl text-[#10B981] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">100%</div>
+          <div class="text-gray-600 text-sm">Green cleaning products</div>
+        </div>
+
+        <!-- Trust Signal 6 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-customer-service-line text-5xl text-[#10B981] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">24/7</div>
+          <div class="text-gray-600 text-sm">Customer support availability</div>
+        </div>
+
+        <!-- Trust Signal 7 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-checkbox-circle-line text-5xl text-[#10B981] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">100%</div>
+          <div class="text-gray-600 text-sm">Satisfaction guarantee</div>
+        </div>
+
+        <!-- Trust Signal 8 -->
+        <div class="bg-gray-50 p-6 rounded-xl text-center">
+          <i class="ri-group-line text-5xl text-[#10B981] mb-4 block"></i>
+          <div class="text-3xl font-bold text-gray-900 mb-2">25+</div>
+          <div class="text-gray-600 text-sm">Professional cleaning staff</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <CTASection
+    title="Ready to Experience the Difference?"
+    subtitle="Join hundreds of satisfied clients who trust One Stop Cleaning for their cleaning needs."
+    primaryText="Get Free Quote"
+    secondaryText="Contact Us"
+  />
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background-color: #F9FAFB;
+    overflow: hidden;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8), transparent);
+  }
+
+  /* Flare Elements */
+  .flare-element {
+    background: linear-gradient(135deg, rgb(59, 130, 246) 0%, rgb(16, 185, 129) 100%);
+    position: relative;
+  }
+
+  .flare-element-2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                linear-gradient(135deg, #57b5e7 0%, #10B981 100%);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hero-section {
+      min-height: 50vh;
+    }
+
+    section {
+      padding-top: 3rem !important;
+      padding-bottom: 3rem !important;
+    }
+
+    .flare-element .grid,
+    .flare-element-2 > div {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "One Stop Cleaning",
+  "description": "Family-owned professional cleaning services",
+  "foundingDate": "2015",
+  "priceRange": "$$"
+}
+</script>

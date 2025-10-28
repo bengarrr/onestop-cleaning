@@ -1,0 +1,48 @@
+---
+// Services Overview Component - Grid display of all services for home page
+import { services } from '../data/services';
+---
+
+<!-- Services Overview -->
+<section id="services" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 scroll-animate fade-in">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Our Cleaning Services
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                From commercial offices to residential homes, we provide
+                comprehensive cleaning solutions tailored to your specific
+                needs.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-animate stagger-children">
+            {services.map((service, index) => {
+                const isEven = index % 2 === 0;
+                const colorClass = isEven ? 'primary' : 'secondary';
+                return (
+                    <div
+                        class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                    >
+                        <div
+                            class={`w-16 h-16 flex items-center justify-center bg-${colorClass}/10 rounded-xl mb-6`}
+                        >
+                            <i class={`${service.icon} text-2xl text-${colorClass}`}></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">
+                            {service.name}
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            {service.overviewDescription}
+                        </p>
+                    </div>
+                );
+            })}
+        </div>
+        <div class="flex flex-row justify-center w-full mt-10 scroll-animate fade-in">
+            <a href={`/services`} class="bg-primary hover:bg-primary/70 text-white rounded-lg px-8 py-4 text-lg font-semibold whitespace-nowrap">
+                Learn More
+            </a>
+        </div>
+    </div>
+</section>

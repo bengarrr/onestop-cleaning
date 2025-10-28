@@ -1,0 +1,6 @@
+node_modules
+specs
+.astro
+dist
+
+package-lock*

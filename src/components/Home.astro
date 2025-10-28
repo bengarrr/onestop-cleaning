@@ -1,0 +1,393 @@
+---
+import ContactForm from "./ContactForm.astro";
+import Hero from "./page/Hero.astro";
+import ServicesOverview from "./ServicesOverview.astro";
+import TrustSignals from "./TrustSignals.astro";
+
+
+---
+
+<Hero />
+<ServicesOverview />
+<!-- Industries Served -->
+<section id="industries" class="py-20 bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 scroll-animate fade-in">
+            <h2 class="text-4xl font-bold text-zinc-50 mb-4">
+                Industries We Serve
+            </h2>
+            <p class="text-xl text-zinc-50 max-w-3xl mx-auto">
+                Our specialized cleaning expertise spans across diverse
+                industries, each with unique requirements and standards.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 scroll-animate stagger-children">
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Beautiful%20clean%20residential%20home%20interior%20with%20spotless%20living%20room%2C%20organized%20furniture%2C%20pristine%20surfaces%2C%20comfortable%20family%20environment%2C%20domestic%20cleaning%20excellence%2C%20modern%20home%20decor%2C%20welcoming%20living%20space&width=400&height=300&seq=residential001&orientation=landscape"
+                        alt="Residential Homes"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Residential Homes
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Personalized home cleaning services tailored to family
+                    lifestyles and preferences.
+                </p>
+            </div>
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Modern%20office%20building%20interior%20with%20clean%20glass%20partitions%2C%20professional%20workstations%2C%20bright%20lighting%2C%20organized%20workspace%2C%20contemporary%20corporate%20environment%2C%20business%20professionals%20working%2C%20sleek%20furniture%20and%20technology%2C%20pristine%20floors%20and%20surfaces&width=400&height=300&seq=office001&orientation=landscape"
+                        alt="Office Buildings"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Office Buildings
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Professional workspace cleaning with attention to
+                    high-traffic areas and sanitization protocols.
+                </p>
+            </div>
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Clean%20modern%20medical%20facility%20interior%20with%20sterile%20white%20surfaces%2C%20medical%20equipment%2C%20hospital%20corridors%2C%20healthcare%20environment%2C%20sanitized%20examination%20rooms%2C%20professional%20medical%20setting%2C%20bright%20clinical%20lighting&width=400&height=300&seq=medical001&orientation=landscape"
+                        alt="Medical Facilities"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Medical Facilities
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Healthcare-grade cleaning and disinfection meeting strict
+                    medical industry standards.
+                </p>
+            </div>
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Clean%20retail%20store%20interior%20with%20organized%20merchandise%20displays%2C%20polished%20floors%2C%20bright%20commercial%20lighting%2C%20shopping%20environment%2C%20modern%20retail%20fixtures%2C%20customer-friendly%20space%2C%20pristine%20product%20shelving&width=400&height=300&seq=retail001&orientation=landscape"
+                        alt="Retail Stores"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Retail Stores
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Customer-focused cleaning that maintains appealing shopping
+                    environments and product displays.
+                </p>
+            </div>
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Clean%20restaurant%20interior%20with%20sanitized%20dining%20tables%2C%20spotless%20kitchen%20equipment%2C%20polished%20surfaces%2C%20food%20service%20environment%2C%20commercial%20grade%20cleanliness%2C%20professional%20dining%20space%2C%20hygienic%20food%20preparation%20areas&width=400&height=300&seq=restaurant001&orientation=landscape"
+                        alt="Restaurants"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Restaurants
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Food-safe cleaning protocols ensuring hygiene standards for
+                    dining and kitchen areas.
+                </p>
+            </div>
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Clean%20school%20classroom%20interior%20with%20organized%20desks%2C%20sanitized%20learning%20environment%2C%20educational%20materials%2C%20bright%20academic%20setting%2C%20student-safe%20cleaning%2C%20institutional%20cleanliness%20standards%2C%20modern%20educational%20facility&width=400&height=300&seq=school001&orientation=landscape"
+                        alt="Schools"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Schools
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Child-safe cleaning products and methods creating healthy
+                    learning environments.
+                </p>
+            </div>
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Clean%20warehouse%20interior%20with%20organized%20storage%20systems%2C%20industrial%20cleaning%20equipment%2C%20large%20open%20spaces%2C%20logistics%20environment%2C%20commercial%20storage%20facility%2C%20pristine%20floors%20and%20high%20ceilings%2C%20professional%20industrial%20setting&width=400&height=300&seq=warehouse001&orientation=landscape"
+                        alt="Warehouses"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Warehouses
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Industrial-scale cleaning for large spaces, equipment, and
+                    high-traffic logistics areas.
+                </p>
+            </div>
+            <div class="group">
+                <div class="relative overflow-hidden rounded-xl mb-4">
+                    <img
+                        src="https://readdy.ai/api/search-image?query=Clean%20manufacturing%20facility%20interior%20with%20industrial%20equipment%2C%20organized%20production%20lines%2C%20safety%20standards%20compliance%2C%20professional%20industrial%20environment%2C%20spotless%20machinery%20and%20work%20areas%2C%20modern%20manufacturing%20setting&width=400&height=300&seq=manufacturing001&orientation=landscape"
+                        alt="Manufacturing"
+                        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+                <h3 class="text-lg font-semibold text-zinc-50 mb-2">
+                    Manufacturing
+                </h3>
+                <p class="text-zinc-50 text-sm">
+                    Specialized industrial cleaning meeting safety and
+                    production environment requirements.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Trust Signals & Credentials -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <TrustSignals />
+        <!-- Testimonials -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16 scroll-animate stagger-children">
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6 italic">
+                    "One Stop Cleaning has been maintaining our office for over
+                    3 years. Their attention to detail and reliability is
+                    unmatched. Our employees love coming to a spotless workspace
+                    every morning."
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div>
+                        <div class="font-semibold text-gray-900">
+                            Sarah Johnson
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            Operations Manager, TechCorp
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6 italic">
+                    "Professional, punctual, and thorough. One Stop Cleaning's
+                    team goes above and beyond every single time. I highly
+                    recommend their services for any business looking for
+                    quality cleaning."
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div>
+                        <div class="font-semibold text-gray-900">
+                            Michael Chen
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            Facility Director, Metro Hospital
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="flex text-yellow-400">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-6 italic">
+                    "From weekly house cleaning to deep cleaning services, One
+                    Stop Cleaning consistently delivers exceptional results.
+                    Their eco-friendly approach gives me peace of mind with my
+                    family."
+                </p>
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div>
+                        <div class="font-semibold text-gray-900">
+                            Emily Rodriguez
+                        </div>
+                        <div class="text-sm text-gray-600">
+                            Homeowner, Riverside
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Certifications -->
+        <div class="bg-white p-8 rounded-xl scroll-animate slide-up">
+            <h3 class="text-2xl font-semibold text-gray-900 text-center mb-8">
+                Certifications &amp; Credentials
+            </h3>
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-shield-check-fill text-2xl text-secondary"
+                        ></i>
+                    </div>
+                    <span class="text-gray-700 font-medium"
+                        >Licensed &amp; Bonded</span
+                    >
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-shield-star-fill text-2xl text-secondary"
+                        ></i>
+                    </div>
+                    <span class="text-gray-700 font-medium">Fully Insured</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-leaf-fill text-2xl text-secondary"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium">Eco-Certified</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 flex items-center justify-center">
+                        <i class="ri-award-fill text-2xl text-secondary"></i>
+                    </div>
+                    <span class="text-gray-700 font-medium">OSHA Compliant</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Why Choose Us -->
+<section id="about" class="py-20">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 scroll-animate fade-in">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Why Choose One Stop Cleaning
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                We go beyond basic cleaning to deliver exceptional service that
+                exceeds expectations and builds lasting relationships.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-animate stagger-children">
+            <div class="text-center">
+                <div
+                    class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-full mx-auto mb-6"
+                >
+                    <i class="ri-shield-check-line text-3xl text-primary"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    Licensed &amp; Insured
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Fully licensed, bonded, and insured for your complete peace
+                    of mind. Our comprehensive coverage protects your property
+                    and our team.
+                </p>
+            </div>
+            <div class="text-center">
+                <div
+                    class="w-20 h-20 flex items-center justify-center bg-secondary/10 rounded-full mx-auto mb-6"
+                >
+                    <i class="ri-leaf-line text-3xl text-secondary"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    Eco-Friendly Products
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    We use environmentally safe, non-toxic cleaning products
+                    that are effective yet gentle on people, pets, and the
+                    planet.
+                </p>
+            </div>
+            <div class="text-center">
+                <div
+                    class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-full mx-auto mb-6"
+                >
+                    <i class="ri-calendar-check-line text-3xl text-primary"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    Flexible Scheduling
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Work around your schedule with flexible timing options
+                    including evenings, weekends, and emergency cleaning
+                    services.
+                </p>
+            </div>
+            <div class="text-center">
+                <div
+                    class="w-20 h-20 flex items-center justify-center bg-secondary/10 rounded-full mx-auto mb-6"
+                >
+                    <i class="ri-user-star-line text-3xl text-secondary"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    Trained Professionals
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Our experienced team undergoes rigorous training and
+                    background checks to ensure the highest standards of service
+                    and security.
+                </p>
+            </div>
+            <div class="text-center">
+                <div
+                    class="w-20 h-20 flex items-center justify-center bg-primary/10 rounded-full mx-auto mb-6"
+                >
+                    <i class="ri-medal-line text-3xl text-primary"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    Quality Guarantee
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    100% satisfaction guarantee on all services. If you're not
+                    completely satisfied, we'll return to make it right at no
+                    extra cost.
+                </p>
+            </div>
+            <div class="text-center">
+                <div
+                    class="w-20 h-20 flex items-center justify-center bg-secondary/10 rounded-full mx-auto mb-6"
+                >
+                    <i class="ri-price-tag-3-line text-3xl text-secondary"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    Competitive Pricing
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Transparent, competitive pricing with no hidden fees. Get
+                    the best value for professional cleaning services in your
+                    area.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact & Booking -->
+<ContactForm />

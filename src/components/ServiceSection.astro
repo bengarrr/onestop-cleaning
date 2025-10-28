@@ -1,0 +1,188 @@
+---
+// Service Section Component - Full-width alternating section for index page
+import type { Service } from '../data/services';
+
+interface Props {
+  service: Service;
+  index: number;
+}
+
+const { service, index } = Astro.props;
+const isEven = index % 2 === 0;
+const contentOrderClass = isEven ? 'lg:order-1' : 'lg:order-2';
+const imagesOrderClass = isEven ? 'lg:order-2' : 'lg:order-1';
+const bgClass = isEven ? 'bg-white' : 'bg-gray-50';
+
+// Generate star rating
+const stars = Array(service.testimonial.rating).fill('★').join('');
+---
+
+<section class={bgClass}>
+  <div class="max-w-7xl mx-auto px-6 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Content Side -->
+      <div class={contentOrderClass}>
+        <div class="flex items-center gap-6 mb-6">
+          <div class="icon-container">
+            <i class={service.icon}></i>
+          </div>
+          <h2 class="text-4xl font-bold text-gray-900">
+            {service.name}
+          </h2>
+        </div>
+
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          {service.shortDescription}
+        </p>
+
+        <ul class="space-y-3 mb-8">
+          {service.features.map(feature => (
+            <li class="flex items-start text-gray-600">
+              <span class="text-primary text-xl mr-3 font-bold">✓</span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Testimonial -->
+        <div class="testimonial">
+          <div class="rating" aria-label={`${service.testimonial.rating} out of 5 stars`}>
+            {stars}
+          </div>
+          <p class="quote">
+            "{service.testimonial.quote}"
+          </p>
+          <div class="author">
+            <strong>{service.testimonial.author}</strong>
+            <span>
+              {service.testimonial.role}
+              {service.testimonial.company && `, ${service.testimonial.company}`}
+            </span>
+          </div>
+        </div>
+
+        <a href={`/services/${service.id}`} class="cta-button">
+          Learn More
+        </a>
+      </div>
+
+      <!-- Images Side -->
+      <div class={imagesOrderClass}>
+        <div class="preview-gallery">
+          {service.previewGallery.map(image => {
+            if(image.thumbnail.length > 0) {
+              return (
+                <img
+                  src={image.thumbnail}
+                  alt={image.alt}
+                  loading="lazy"
+                  class="gallery-img"
+                />
+              )
+            }
+            return (
+              <i class="ri-team-fill text-9xl text-gray-400"></i>
+            ) 
+          })}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @reference "../styles/global.css";
+
+  .icon-container {
+    @apply text-primary bg-primary/10;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Testimonial */
+  .testimonial {
+    @apply border-l-primary border-l-4;
+    background-color: rgba(59, 130, 246, 0.05);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .rating {
+    color: #F59E0B;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .quote {
+    font-style: italic;
+    color: #374151;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .author strong {
+    display: block;
+    color: #111827;
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+
+  .author span {
+    color: #6B7280;
+    font-size: 0.875rem;
+  }
+
+  /* Preview Gallery */
+  .preview-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    transition: transform 0.3s;
+  }
+
+  .gallery-img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Responsive: Stack on mobile */
+  @media (max-width: 1023px) {
+    .preview-gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+<style is:global>
+  @reference "../styles/global.css";
+  
+  /* CTA Button */
+  .cta-button {
+    @apply bg-primary hover:bg-primary/70;
+    display: inline-block;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+// Service Gallery Component - Displays grid of images with modal integration
+import type { GalleryImage } from '../data/services';
+
+interface Props {
+  images: GalleryImage[];
+  title?: string;
+}
+
+const { images, title = "Gallery" } = Astro.props;
+---
+
+<section class="gallery-section py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-gray-900">{title}</h3>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {images.map((image, index) => (
+        <div
+          class="gallery-item group relative overflow-hidden rounded-xl cursor-pointer"
+          data-index={index}
+          role="button"
+          tabindex="0"
+          aria-label={`View ${image.alt} in full size`}
+        >
+          <img
+            src={image.thumbnail}
+            alt={image.alt}
+            loading="lazy"
+            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <i class="ri-zoom-in-line text-white text-4xl"></i>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-item:focus {
+    outline: 2px solid rgb(59, 130, 246);
+    outline-offset: 2px;
+  }
+</style>
+
+<script define:vars={{ images }}>
+  // Add click handlers to gallery items
+  document.querySelectorAll('.gallery-item').forEach((item) => {
+    const index = parseInt(item.getAttribute('data-index') || '0');
+
+    // Click handler
+    item.addEventListener('click', () => {
+      if (window.openImageModal) {
+        window.openImageModal(index, images);
+      }
+    });
+
+    // Keyboard handler
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (window.openImageModal) {
+          window.openImageModal(index, images);
+        }
+      }
+    });
+  });
+</script>

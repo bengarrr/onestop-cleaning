@@ -1,0 +1,132 @@
+---
+import { services } from "../data/services";
+---
+
+<footer class="bg-gray-900 text-white py-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <div
+                        class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full"
+                    >
+                        <i class="ri-sparkling-line text-lg"></i>
+                    </div>
+                    <span class="text-2xl font-bold"
+                        >One Stop Cleaning</span
+                    >
+                </div>
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    Professional cleaning services for homes and businesses.
+                    Licensed, insured, and trusted by thousands of satisfied
+                    clients.
+                </p>
+                <div class="flex space-x-4">
+                    <a
+                        href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors"
+                    >
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a
+                        href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors"
+                    >
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                    <a
+                        href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors"
+                    >
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a
+                        href="#"
+                        class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition-colors"
+                    >
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6">Services</h3>
+                <ul class="space-y-3 text-gray-400">
+                    {services.map(service => {
+                        return (
+                            <li>
+                                <a href={`/services/${service.id}`} class="hover:text-white transition-colors">
+                                    {service.name}
+                                </a>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6">Industries</h3>
+                <ul class="space-y-3 text-gray-400">
+                    <li>
+                        <a href="/services" class="hover:text-white transition-colors"
+                            >Residential Buildings</a>
+                    </li>
+                    <li>
+                        <a href="/services" class="hover:text-white transition-colors"
+                            >Office Buildings</a>
+                    </li>
+                    <li>
+                        <a href="/services" class="hover:text-white transition-colors"
+                            >Medical Facilities</a>
+                    </li>
+                    <li>
+                        <a href="/services" class="hover:text-white transition-colors"
+                            >Retail Stores</a>
+                    </li>
+                    <li>
+                        <a href="/services" class="hover:text-white transition-colors"
+                            >Restaurants</a>
+                    </li>
+                    <li>
+                        <a href="/services" class="hover:text-white transition-colors"
+                            >Schools</a>
+                    </li>
+                    <li>
+                        <a href="/services" class="hover:text-white transition-colors"
+                            >Warehouses</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6">Contact Info</h3>
+                <div class="space-y-4 text-gray-400">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-phone-line"></i>
+                        </div>
+                        <span>(555) 123-4567</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-5 h-5 flex items-center justify-center">
+                            <i class="ri-mail-line"></i>
+                        </div>
+                        <span>info@onestopcleaning.com</span>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div
+                            class="w-5 h-5 flex items-center justify-center mt-1"
+                        >
+                            <i class="ri-map-pin-line"></i>
+                        </div>
+                        <span>123 Business Ave<br />Downtown, ST 12345</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                    © 2025 One Stop Cleaning. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

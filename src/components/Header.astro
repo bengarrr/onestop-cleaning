@@ -3,26 +3,26 @@ import { navigation } from "../data/navigation"
 ---
 
 <!-- Header -->
-<header class="bg-white shadow-sm">
+<header class="bg-white fixed top-0 left-0 right-0 z-50 shadow-sm">
     <nav class="px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-1 lg:space-x-2">
                 <div
-                    class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full"
+                    class="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center bg-primary text-white rounded-full"
                 >
-                    <i class="ri-sparkling-line text-lg"></i>
+                    <i class="ri-sparkling-line text-sm lg:text-lg"></i>
                 </div>
-                <span class="text-2xl font-extrabold text-gray-900"
+                <span class="text-md lg:text-2xl font-extrabold text-gray-900"
                     >One Stop Cleaning</span
                 >
             </div>
-            <div class="hidden md:flex items-center space-x-8">
+            <div class="hidden md:flex items-center xl:space-x-8">
                 {navigation.map(link => {
                     if(link.subLinks && link.subLinks.length > 0) {
                          return (
                             <details class="group [&amp;_summary::-webkit-details-marker]:hidden rounded-lg hover:bg-primary/10 text-gray-700 hover:text-primary! transition-colors relative">
-                                <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 ">
-                                    <span class="flex cursor-pointer items-center justify-between rounded-lg">
+                                <summary class="flex cursor-pointer items-center justify-between rounded-lg px-2 lg:px-4 py-2 ">
+                                    <span class="flex cursor-pointer items-center justify-between rounded-lg text-xs lg:text-base">
                                         <a href={link.link}> {link.name} </a>
                                     </span>
                                     <span class="shrink-0 transition duration-300 group-open:-rotate-180">
@@ -50,7 +50,7 @@ import { navigation } from "../data/navigation"
                     }
 
                     return (
-                        <a href={link.link} class="rounded-lg px-4 py-2 text-gray-700 hover:bg-primary/10 hover:text-primary transition-colors"> 
+                        <a href={link.link} class="rounded-lg px-2 lg:px-4 py-2 text-xs lg:text-base text-gray-700 hover:bg-primary/10 hover:text-primary transition-colors"> 
                             {link.name}
                         </a>
                     )
@@ -76,67 +76,106 @@ import { navigation } from "../data/navigation"
                     >Contact</a
                 > -->
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="tel:+1-555-0123" class="text-primary font-semibold"
+            <div class="flex items-center space-x-2 lg:space-x-4">
+                <a href="tel:+1-555-0123" class="text-primary text-sm lg:text-base font-semibold whitespace-nowrap block"
                     >(555) 123-4567</a
                 >
                 <a
-                    href="/contact" class="bg-primary cursor-pointer text-white px-6 py-2 !rounded-button hover:bg-primary/70 transition-colors whitespace-nowrap"
+                    href="/contact" class="bg-primary cursor-pointer text-sm lg:text-base text-white px-4 lg:px-6 py-2 !rounded-button hover:bg-primary/70 transition-colors whitespace-nowrap hidden md:block"
                 >
                     Get Quote
                 </a>
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-primary transition-colors p-2" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 </header>
 
-<nav class="side-menu hidden">
-    <ul class="space-y-1">
-        {navigation.map(link => {
-            if(link.subLinks && link.subLinks?.length > 0) {
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden transition-opacity"></div>
+
+<!-- Side Menu Drawer -->
+<nav id="mobile-menu-drawer" class="side-menu fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+    <div class="p-6">
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-1 lg:space-x-2">
+                <div
+                    class="w-6 h-6 lg:w-8 lg:h-8 flex items-center justify-center bg-primary text-white rounded-full"
+                >
+                    <i class="ri-sparkling-line text-sm lg:text-lg"></i>
+                </div>
+                <span class="text-md lg:text-2xl font-extrabold text-gray-900"
+                    >One Stop Cleaning</span
+                >
+            </div>
+            <button id="mobile-menu-close" class="text-gray-700 hover:text-primary transition-colors p-2" aria-label="Close menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <ul class="space-y-1">
+            {navigation.map(link => {
+                if(link.subLinks && link.subLinks?.length > 0) {
+                    return (
+                        <li>
+                            <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
+                                <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                    <span class="flex cursor-pointer items-center justify-between rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                        <a href={link.link} class="text-sm font-medium"> {link.name} </a>
+                                    </span>
+                                    <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                </summary>
+
+                                {link.subLinks.map(subLink => {
+                                    return (
+                                        <ul class="mt-2 space-y-1 px-4">
+                                            <li>
+                                                <a href={subLink.link} class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                                    {subLink.name}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    )
+                                })}
+                            </details>
+                        </li>
+                    )
+                }
+
                 return (
                     <li>
-                        <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
-                            <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                                <span class="flex cursor-pointer items-center justify-between rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                                    <a href={link.link} class="text-sm font-medium"> {link.name} </a>
-                                </span>
-                                <span class="shrink-0 transition duration-300 group-open:-rotate-180">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                            </summary>
-
-                            {link.subLinks.map(subLink => {
-                                return (
-                                    <ul class="mt-2 space-y-1 px-4">
-                                        <li>
-                                            <a href={subLink.link} class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                                                {subLink.name}
-                                            </a>
-                                        </li>
-                                    </ul>
-                                )
-                            })}
-                        </details>
+                        <a href={link.link} class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                            {link.name}
+                        </a>
                     </li>
                 )
-            }
-
-            return (
-                <li>
-                    <a href={link.link} class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                        {link.name}
-                    </a>
-                </li>
-            )
-        })}
-    </ul>
+            })}
+        </ul>
+        <div class="mt-6 pt-6 border-t border-gray-200 space-y-3">
+            <a href="tel:+1-555-0123" class="block text-center text-primary font-semibold">
+                (555) 123-4567
+            </a>
+            <a
+                href="/contact" class="block text-center bg-primary cursor-pointer text-white px-6 py-2 !rounded-button hover:bg-primary/70 transition-colors whitespace-nowrap"
+            >
+                Get Quote
+            </a>
+        </div>
+    </div>
 </nav>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Desktop dropdown hover functionality
         const detailsElements = document.querySelectorAll('header details');
 
         detailsElements.forEach(details => {
@@ -166,22 +205,69 @@ import { navigation } from "../data/navigation"
                 //content.addEventListener('mouseleave', close);
             }
         });
+
+        // Mobile drawer functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        const openDrawer = () => {
+            mobileMenuDrawer?.classList.remove('translate-x-full');
+            mobileMenuOverlay?.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeDrawer = () => {
+            mobileMenuDrawer?.classList.add('translate-x-full');
+            mobileMenuOverlay?.classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+
+        mobileMenuButton?.addEventListener('click', openDrawer);
+        mobileMenuClose?.addEventListener('click', closeDrawer);
+        mobileMenuOverlay?.addEventListener('click', closeDrawer);
+
+        // Close drawer when clicking a link
+        const drawerLinks = mobileMenuDrawer?.querySelectorAll('a');
+        drawerLinks?.forEach(link => {
+            link.addEventListener('click', closeDrawer);
+        });
     });
 </script>
 
 <style>
     details[open] ul, details[open] div {
-    animation: animateDown 0.2s linear forwards;
+        animation: animateDown 0.2s linear forwards;
     }
 
     @keyframes animateDown {
-    0% {
-        opacity: 0;
-        transform: translatey(-15px);
+        0% {
+            opacity: 0;
+            transform: translatey(-15px);
+        }
+        100% {
+            opacity: 1;
+            transform: translatey(0);
+        }
     }
-    100% {
-        opacity: 1;
-        transform: translatey(0);
+
+    /* Ensure drawer stays above everything */
+    #mobile-menu-drawer {
+        box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.1), -2px 0 4px -1px rgba(0, 0, 0, 0.06);
     }
+
+    /* Smooth overlay fade */
+    #mobile-menu-overlay:not(.hidden) {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 </style>

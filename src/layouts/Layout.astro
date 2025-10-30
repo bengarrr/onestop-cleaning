@@ -93,6 +93,27 @@ const { title } = Astro.props;
 	.scroll-animate.stagger-children.visible > *:nth-child(8) { transition-delay: 0.8s; }
 </style>
 
+<style is:global>
+  @reference "../styles/global.css";
+  
+  /* CTA Button */
+  .cta-button {
+    @apply bg-primary hover:bg-primary/70;
+    display: inline-block;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+</style>
+
 <script id="smooth-scrolling">
     document.addEventListener("DOMContentLoaded", function () {
         const links = document.querySelectorAll('a[href^="#"]');

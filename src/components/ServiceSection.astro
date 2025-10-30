@@ -165,24 +165,3 @@ const stars = Array(service.testimonial.rating).fill('★').join('');
     }
   }
 </style>
-
-<style is:global>
-  @reference "../styles/global.css";
-  
-  /* CTA Button */
-  .cta-button {
-    @apply bg-primary hover:bg-primary/70;
-    display: inline-block;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-  }
-</style>

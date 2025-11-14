@@ -3,6 +3,7 @@
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
 import TrustSignals from '../components/TrustSignals.astro';
+import HeroSection from '../components/page/HeroSection.astro';
 
 const title = "About Us | One Stop Cleaning - Family-Owned Cleaning Services";
 const description = "Learn about One Stop Cleaning, a family-owned business providing professional cleaning services for 10+ years. Licensed, insured, and trusted by 500+ clients.";
@@ -16,16 +17,11 @@ const description = "Learn about One Stop Cleaning, a family-owned business prov
   <title slot="head">{title}</title>
 
   <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-gradient"></div>
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">About One Stop Cleaning</h1>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        A family-owned business dedicated to providing exceptional cleaning services
-        with integrity, care, and professional excellence since 2015.
-      </p>
-    </div>
-  </section>
+  <HeroSection
+    title="About One Stop Cleaning"
+    description=`A family-owned business dedicated to providing exceptional cleaning services
+        with integrity, care, and professional excellence since 2015.`
+  ></HeroSection>
 
   <!-- Section A: Company Backstory -->
   <section class="bg-white py-20">
@@ -358,20 +354,6 @@ const description = "Learn about One Stop Cleaning, a family-owned business prov
 
 <style>
   /* Hero Section */
-  .hero-section {
-    position: relative;
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    background-color: #F9FAFB;
-    overflow: hidden;
-  }
-
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8), transparent);
-  }
 
   /* Flare Elements */
   .flare-element {
@@ -389,10 +371,6 @@ const description = "Learn about One Stop Cleaning, a family-owned business prov
 
   /* Responsive adjustments */
   @media (max-width: 768px) {
-    .hero-section {
-      min-height: 50vh;
-    }
-
     section {
       padding-top: 3rem !important;
       padding-bottom: 3rem !important;

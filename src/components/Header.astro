@@ -1,5 +1,6 @@
 ---
 import { navigation } from "../data/navigation"
+import { contact } from "../data/contact"
 ---
 
 <!-- Header -->
@@ -77,8 +78,8 @@ import { navigation } from "../data/navigation"
                 > -->
             </div>
             <div class="flex items-center space-x-2 lg:space-x-4">
-                <a href="tel:+1-555-0123" class="text-primary text-sm lg:text-base font-semibold whitespace-nowrap block"
-                    >(555) 123-4567</a
+                <a href=`tel:${contact.phone_raw}` class="text-primary text-sm lg:text-base font-semibold whitespace-nowrap block"
+                    >{contact.phone}</a
                 >
                 <a
                     href="/contact" class="bg-primary cursor-pointer text-sm lg:text-base text-white px-4 lg:px-6 py-2 !rounded-button hover:bg-primary/70 transition-colors whitespace-nowrap hidden md:block"
@@ -161,8 +162,8 @@ import { navigation } from "../data/navigation"
             })}
         </ul>
         <div class="mt-6 pt-6 border-t border-gray-200 space-y-3">
-            <a href="tel:+1-555-0123" class="block text-center text-primary font-semibold">
-                (555) 123-4567
+            <a href=`tel:${contact.phone_raw}` class="block text-center text-primary font-semibold">
+                {contact.phone}
             </a>
             <a
                 href="/contact" class="block text-center bg-primary cursor-pointer text-white px-6 py-2 !rounded-button hover:bg-primary/70 transition-colors whitespace-nowrap"

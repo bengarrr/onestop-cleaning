@@ -1,0 +1,44 @@
+---
+const { title, description } = Astro.props;
+---
+
+<section class="hero-section">
+    <div class="hero-gradient"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            {title}
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            {description}
+        </p>
+    </div>
+</section>
+
+<style>
+    .hero-section {
+        position: relative;
+        min-height: 300px;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        background-color: #f9fafb;
+        overflow: hidden;
+    }
+
+    .hero-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.8),
+            transparent
+        );
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            height: 50vh;
+        }
+    }
+</style>

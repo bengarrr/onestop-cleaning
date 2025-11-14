@@ -1,3 +1,7 @@
+---
+import { contact } from "../data/contact";
+import { services } from "../data/services";
+---
 <section id="contact" class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
@@ -24,7 +28,7 @@
                         </div>
                         <div>
                             <div class="font-semibold text-gray-900">Phone</div>
-                            <div class="text-gray-600">(555) 123-4567</div>
+                            <div class="text-gray-600">{contact.phone}</div>
                             <div class="text-sm text-gray-500">
                                 Available 24/7 for emergencies
                             </div>
@@ -39,7 +43,7 @@
                         <div>
                             <div class="font-semibold text-gray-900">Email</div>
                             <div class="text-gray-600">
-                                info@onestopcleaning.com
+                                {contact.email}
                             </div>
                             <div class="text-sm text-gray-500">
                                 Response within 2 hours
@@ -105,68 +109,92 @@
                 <h3 class="text-2xl font-semibold text-gray-900 mb-6">
                     Get in touch
                 </h3>
-                <form class="space-y-6">
+                <form class="space-y-6" action="https://formsubmit.co/c31bc10292606547aa823e1342fac6a2" method="POST" id="contact-form" novalidate>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label
                                 class="block text-sm font-medium text-gray-700 mb-2"
-                                >First Name</label
+                                for="first_name"
+                                >First Name <span class="text-red-500">*</span></label
                             >
                             <input
                                 type="text"
+                                id="first_name"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                                 placeholder="John"
+                                name="first_name"
+                                required
+                                minlength="2"
                             />
+                            <p class="text-red-500 text-xs mt-1 hidden" id="first_name-error">Please enter your first name (at least 2 characters)</p>
                         </div>
                         <div>
                             <label
                                 class="block text-sm font-medium text-gray-700 mb-2"
-                                >Last Name</label
+                                for="last_name"
+                                >Last Name <span class="text-red-500">*</span></label
                             >
                             <input
                                 type="text"
+                                id="last_name"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                                 placeholder="Smith"
+                                name="last_name"
+                                required
+                                minlength="2"
                             />
+                            <p class="text-red-500 text-xs mt-1 hidden" id="last_name-error">Please enter your last name (at least 2 characters)</p>
                         </div>
                     </div>
                     <div>
                         <label
                             class="block text-sm font-medium text-gray-700 mb-2"
-                            >Email Address</label
+                            for="email"
+                            >Email Address <span class="text-red-500">*</span></label
                         >
                         <input
                             type="email"
+                            id="email"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                             placeholder="john@example.com"
+                            name="email"
                         />
                     </div>
                     <div>
                         <label
                             class="block text-sm font-medium text-gray-700 mb-2"
-                            >Phone Number</label
+                            for="phone"
+                            >Phone Number <span class="text-red-500">*</span></label
                         >
                         <input
                             type="tel"
+                            id="phone"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                             placeholder="(555) 123-4567"
+                            name="phone"
+                            required
+                            pattern="[\(\)\d\s\-\+\.ext]+"
                         />
+                        <p class="text-red-500 text-xs mt-1 hidden" id="phone-error">Please enter a valid phone number</p>
                     </div>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label
                                 class="block text-sm font-medium text-gray-700 mb-2"
-                                >Service Type</label
+                                for="service_type"
+                                >Service Type <span class="text-red-500">*</span></label
                             >
                             <div class="relative">
                                 <button
                                     type="button"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm text-left bg-white flex items-center justify-between"
                                     onclick="toggleDropdown('service-dropdown')"
+                                    id="service-button"
                                 >
                                     <span id="service-selected"
                                         >Select Service</span
                                     >
+                                    <input type="hidden" name="service_type" id="service-selected-input" required />
                                     <i class="ri-arrow-down-s-line"></i>
                                 </button>
                                 <div
@@ -174,48 +202,39 @@
                                     class="hidden absolute top-full left-0 right-0 bg-white border border-gray-300 rounded-lg mt-1 shadow-lg z-10"
                                 >
                                     <div class="py-1">
-                                        <button
-                                            type="button"
-                                            class="w-full px-4 py-2 text-left hover:bg-gray-50 text-sm"
-                                            onclick="selectOption('service', 'Commercial Cleaning')"
-                                            >Commercial Cleaning</button
-                                        >
-                                        <button
-                                            type="button"
-                                            class="w-full px-4 py-2 text-left hover:bg-gray-50 text-sm"
-                                            onclick="selectOption('service', 'Residential Cleaning')"
-                                            >Residential Cleaning</button
-                                        >
-                                        <button
-                                            type="button"
-                                            class="w-full px-4 py-2 text-left hover:bg-gray-50 text-sm"
-                                            onclick="selectOption('service', 'Deep Cleaning')"
-                                            >Deep Cleaning</button
-                                        >
-                                        <button
-                                            type="button"
-                                            class="w-full px-4 py-2 text-left hover:bg-gray-50 text-sm"
-                                            onclick="selectOption('service', 'Post-Construction')"
-                                            >Post-Construction</button
-                                        >
+                                        {services.map(service => {
+                                            return (
+                                                <button
+                                                    type="button"
+                                                    class="w-full px-4 py-2 text-left hover:bg-gray-50 text-sm"
+                                                    onclick=`selectOption('service', '${service.name}')`
+                                                >
+                                                    {service.name}
+                                                </button>
+                                            )
+                                        })}
                                     </div>
                                 </div>
+                                <p class="text-red-500 text-xs mt-1 hidden" id="service_type-error">Please select a service type</p>
                             </div>
                         </div>
                         <div>
                             <label
                                 class="block text-sm font-medium text-gray-700 mb-2"
-                                >Property Type</label
+                                for="property_type"
+                                >Property Type <span class="text-red-500">*</span></label
                             >
                             <div class="relative">
                                 <button
                                     type="button"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm text-left bg-white flex items-center justify-between"
                                     onclick="toggleDropdown('property-dropdown')"
+                                    id="property-button"
                                 >
                                     <span id="property-selected"
                                         >Select Property</span
                                     >
+                                    <input type="hidden" name="property_type" id="property-selected-input" required />
                                     <i class="ri-arrow-down-s-line"></i>
                                 </button>
                                 <div
@@ -226,14 +245,14 @@
                                         <button
                                             type="button"
                                             class="w-full px-4 py-2 text-left hover:bg-gray-50 text-sm"
-                                            onclick="selectOption('property', 'Office Building')"
-                                            >Office Building</button
+                                            onclick="selectOption('property', 'Residential Home')"
+                                            >Residential Home</button
                                         >
                                         <button
                                             type="button"
                                             class="w-full px-4 py-2 text-left hover:bg-gray-50 text-sm"
-                                            onclick="selectOption('property', 'Residential Home')"
-                                            >Residential Home</button
+                                            onclick="selectOption('property', 'Office Building')"
+                                            >Office Building</button
                                         >
                                         <button
                                             type="button"
@@ -249,6 +268,7 @@
                                         >
                                     </div>
                                 </div>
+                                <p class="text-red-500 text-xs mt-1 hidden" id="property_type-error">Please select a property type</p>
                             </div>
                         </div>
                     </div>
@@ -256,25 +276,33 @@
                         <div>
                             <label
                                 class="block text-sm font-medium text-gray-700 mb-2"
-                                >Preferred Date</label
+                                for="preferred_date"
+                                >Preferred Date <span class="text-red-500">*</span></label
                             >
                             <input
                                 type="date"
+                                id="preferred_date"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm"
+                                name="preferred_date"
+                                required
                             />
+                            <p class="text-red-500 text-xs mt-1 hidden" id="preferred_date-error">Please select a preferred date</p>
                         </div>
                         <div>
                             <label
                                 class="block text-sm font-medium text-gray-700 mb-2"
-                                >Preferred Time</label
+                                for="preferred_time"
+                                >Preferred Time <span class="text-red-500">*</span></label
                             >
                             <div class="relative">
                                 <button
                                     type="button"
                                     class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm text-left bg-white flex items-center justify-between"
                                     onclick="toggleDropdown('time-dropdown')"
+                                    id="time-button"
                                 >
                                     <span id="time-selected">Select Time</span>
+                                    <input type="hidden" name="preferred_time" id="time-selected-input" required />
                                     <i class="ri-arrow-down-s-line"></i>
                                 </button>
                                 <div
@@ -302,6 +330,7 @@
                                         >
                                     </div>
                                 </div>
+                                <p class="text-red-500 text-xs mt-1 hidden" id="preferred_time-error">Please select a preferred time</p>
                             </div>
                         </div>
                     </div>
@@ -314,6 +343,7 @@
                             rows="4"
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm"
                             placeholder="Please describe your cleaning needs, square footage, special requirements, etc."
+                            name="additional_details"
                         ></textarea>
                     </div>
                     <button
@@ -342,6 +372,12 @@
     function selectOption(type, value) {
         const selectedElement = document.getElementById(type + "-selected");
         const dropdown = document.getElementById(type + "-dropdown");
+        const input = document.getElementById(type + "-selected-input");
+        if(input) {
+            input.value = value;
+            // Clear error when user selects an option
+            clearError(input.name);
+        }
         selectedElement.textContent = value;
         dropdown.classList.add("hidden");
     }
@@ -365,6 +401,145 @@
             dropdowns.forEach((dropdown) => {
                 dropdown.classList.add("hidden");
             });
+        }
+    });
+</script>
+
+<script id="form-validation">
+    // Validation helper functions
+    function showError(fieldName, message) {
+        const errorElement = document.getElementById(fieldName + '-error');
+        const fieldElement = document.getElementById(fieldName) ||
+                            document.getElementById(fieldName + '-button') ||
+                            document.querySelector(`[name="${fieldName}"]`);
+
+        if (errorElement) {
+            errorElement.classList.remove('hidden');
+            if (message) errorElement.textContent = message;
+        }
+
+        if (fieldElement) {
+            fieldElement.classList.add('border-red-500');
+            fieldElement.classList.remove('border-gray-300');
+        }
+    }
+
+    function clearError(fieldName) {
+        const errorElement = document.getElementById(fieldName + '-error');
+        const fieldElement = document.getElementById(fieldName) ||
+                            document.getElementById(fieldName + '-button') ||
+                            document.querySelector(`[name="${fieldName}"]`);
+
+        if (errorElement) {
+            errorElement.classList.add('hidden');
+        }
+
+        if (fieldElement) {
+            fieldElement.classList.remove('border-red-500');
+            fieldElement.classList.add('border-gray-300');
+        }
+    }
+
+    function validateField(field) {
+        const fieldName = field.name || field.id;
+        let isValid = true;
+
+        // Clear previous error
+        clearError(fieldName);
+
+        // Check if field is required and empty
+        if (field.hasAttribute('required') && !field.value.trim()) {
+            showError(fieldName);
+            isValid = false;
+        }
+        // Check minimum length
+        else if (field.hasAttribute('minlength') && field.value.length < parseInt(field.getAttribute('minlength'))) {
+            showError(fieldName);
+            isValid = false;
+        }
+        // Check email format
+        else if (field.type === 'email' && field.value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                showError(fieldName, 'Please enter a valid email address');
+                isValid = false;
+            }
+        }
+        // Check phone pattern
+        else if (field.type === 'tel' && field.value) {
+            const phoneRegex = /[\(\)\d\s\-\+\.ext]+/;
+            if (!phoneRegex.test(field.value) || field.value.replace(/\D/g, '').length < 10) {
+                showError(fieldName, 'Please enter a valid phone number');
+                isValid = false;
+            }
+        }
+        // Check date is not in the past
+        else if (field.type === 'date' && field.value) {
+            const selectedDate = new Date(field.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            if (selectedDate < today) {
+                showError(fieldName, 'Please select a date in the future');
+                isValid = false;
+            }
+        }
+
+        return isValid;
+    }
+
+    // Add real-time validation on blur
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+
+        // Add blur event listeners to all form fields
+        const formFields = form.querySelectorAll('input[required], textarea[required]');
+        formFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                validateField(this);
+            });
+
+            // Clear error on input
+            field.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    clearError(this.name || this.id);
+                }
+            });
+        });
+
+        // Form submission validation
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let isFormValid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+
+            // Validate all required fields
+            requiredFields.forEach(field => {
+                if (!validateField(field)) {
+                    isFormValid = false;
+                }
+            });
+
+            // Scroll to first error if form is invalid
+            if (!isFormValid) {
+                const firstError = form.querySelector('.border-red-500');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstError.focus();
+                }
+                return false;
+            }
+
+            // If valid, submit the form
+            form.submit();
+        });
+
+        // Set minimum date to today for date picker
+        const dateInput = document.getElementById('preferred_date');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
         }
     });
 </script>

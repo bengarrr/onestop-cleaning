@@ -7,6 +7,7 @@ import ImageModal from '../../components/ImageModal.astro';
 import Header from '../../components/Header.astro';
 import Navigation from '../../components/Navigation.astro';
 import { services } from '../../data/services';
+import HeroSection from '../../components/page/HeroSection.astro';
 
 const title = "Our Services | One Stop Cleaning";
 const description = "Explore our comprehensive range of professional cleaning services including carpet, upholstery, floor cleaning, window cleaning, and more.";
@@ -22,17 +23,12 @@ const description = "Explore our comprehensive range of professional cleaning se
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" slot="head" />
 
   <!-- Hero Section -->
-  <section class="bg-gray-50 py-20">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Our Cleaning Services
-      </h1>
-      <p class="text-xl text-gray-600">
-        Professional cleaning solutions tailored to your needs.
-        Explore our comprehensive range of services and see what our customers have to say.
-      </p>
-    </div>
-  </section>
+  <HeroSection
+    title="Our Cleaning Services"
+    description=`Professional cleaning solutions tailored to your needs.
+        Explore our comprehensive range of services and see what our customers have to say.`
+  >
+  </HeroSection>
 
   <!-- Services Sections -->
   {services.map((service, index) => (

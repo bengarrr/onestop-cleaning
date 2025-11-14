@@ -1,8 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/ContactForm.astro";
+
+const title = "Contact Us | One Stop Cleaning - Family-Owned Cleaning Services"
+const description = "Contact One Stop Cleaning, a family-owned business providing professional cleaning services for 10+ years. Licensed, insured, and trusted by 500+ clients."
 ---
 
 <Layout>
+    <meta name="description" content={description} slot="head" />
+    <meta property="og:title" content={title} slot="head" />
+    <meta property="og:description" content={description} slot="head" />
+    <meta property="og:type" content="website" slot="head" />
+    <title slot="head">{title}</title>
+
     <ContactForm />
 </Layout>

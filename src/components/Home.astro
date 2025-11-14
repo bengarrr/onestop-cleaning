@@ -4,7 +4,7 @@ import Hero from "./page/Hero.astro";
 import ServicesOverview from "./ServicesOverview.astro";
 import TrustSignals from "./TrustSignals.astro";
 
-
+import { webp } from "../utils/image";
 ---
 
 <Hero />
@@ -25,7 +25,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Beautiful%20clean%20residential%20home%20interior%20with%20spotless%20living%20room%2C%20organized%20furniture%2C%20pristine%20surfaces%2C%20comfortable%20family%20environment%2C%20domestic%20cleaning%20excellence%2C%20modern%20home%20decor%2C%20welcoming%20living%20space&width=400&height=300&seq=residential001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Beautiful%20clean%20residential%20home%20interior%20with%20spotless%20living%20room%2C%20organized%20furniture%2C%20pristine%20surfaces%2C%20comfortable%20family%20environment%2C%20domestic%20cleaning%20excellence%2C%20modern%20home%20decor%2C%20welcoming%20living%20space&width=400&height=300&seq=residential001&orientation=landscape")}
                         alt="Residential Homes"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -41,7 +41,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Modern%20office%20building%20interior%20with%20clean%20glass%20partitions%2C%20professional%20workstations%2C%20bright%20lighting%2C%20organized%20workspace%2C%20contemporary%20corporate%20environment%2C%20business%20professionals%20working%2C%20sleek%20furniture%20and%20technology%2C%20pristine%20floors%20and%20surfaces&width=400&height=300&seq=office001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Modern%20office%20building%20interior%20with%20clean%20glass%20partitions%2C%20professional%20workstations%2C%20bright%20lighting%2C%20organized%20workspace%2C%20contemporary%20corporate%20environment%2C%20business%20professionals%20working%2C%20sleek%20furniture%20and%20technology%2C%20pristine%20floors%20and%20surfaces&width=400&height=300&seq=office001&orientation=landscape")}
                         alt="Office Buildings"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -57,7 +57,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Clean%20modern%20medical%20facility%20interior%20with%20sterile%20white%20surfaces%2C%20medical%20equipment%2C%20hospital%20corridors%2C%20healthcare%20environment%2C%20sanitized%20examination%20rooms%2C%20professional%20medical%20setting%2C%20bright%20clinical%20lighting&width=400&height=300&seq=medical001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Clean%20modern%20medical%20facility%20interior%20with%20sterile%20white%20surfaces%2C%20medical%20equipment%2C%20hospital%20corridors%2C%20healthcare%20environment%2C%20sanitized%20examination%20rooms%2C%20professional%20medical%20setting%2C%20bright%20clinical%20lighting&width=400&height=300&seq=medical001&orientation=landscape")}
                         alt="Medical Facilities"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -73,7 +73,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Clean%20retail%20store%20interior%20with%20organized%20merchandise%20displays%2C%20polished%20floors%2C%20bright%20commercial%20lighting%2C%20shopping%20environment%2C%20modern%20retail%20fixtures%2C%20customer-friendly%20space%2C%20pristine%20product%20shelving&width=400&height=300&seq=retail001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Clean%20retail%20store%20interior%20with%20organized%20merchandise%20displays%2C%20polished%20floors%2C%20bright%20commercial%20lighting%2C%20shopping%20environment%2C%20modern%20retail%20fixtures%2C%20customer-friendly%20space%2C%20pristine%20product%20shelving&width=400&height=300&seq=retail001&orientation=landscape")}
                         alt="Retail Stores"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -89,7 +89,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Clean%20restaurant%20interior%20with%20sanitized%20dining%20tables%2C%20spotless%20kitchen%20equipment%2C%20polished%20surfaces%2C%20food%20service%20environment%2C%20commercial%20grade%20cleanliness%2C%20professional%20dining%20space%2C%20hygienic%20food%20preparation%20areas&width=400&height=300&seq=restaurant001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Clean%20restaurant%20interior%20with%20sanitized%20dining%20tables%2C%20spotless%20kitchen%20equipment%2C%20polished%20surfaces%2C%20food%20service%20environment%2C%20commercial%20grade%20cleanliness%2C%20professional%20dining%20space%2C%20hygienic%20food%20preparation%20areas&width=400&height=300&seq=restaurant001&orientation=landscape")}
                         alt="Restaurants"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -105,7 +105,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Clean%20school%20classroom%20interior%20with%20organized%20desks%2C%20sanitized%20learning%20environment%2C%20educational%20materials%2C%20bright%20academic%20setting%2C%20student-safe%20cleaning%2C%20institutional%20cleanliness%20standards%2C%20modern%20educational%20facility&width=400&height=300&seq=school001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Clean%20school%20classroom%20interior%20with%20organized%20desks%2C%20sanitized%20learning%20environment%2C%20educational%20materials%2C%20bright%20academic%20setting%2C%20student-safe%20cleaning%2C%20institutional%20cleanliness%20standards%2C%20modern%20educational%20facility&width=400&height=300&seq=school001&orientation=landscape")}
                         alt="Schools"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -121,7 +121,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Clean%20warehouse%20interior%20with%20organized%20storage%20systems%2C%20industrial%20cleaning%20equipment%2C%20large%20open%20spaces%2C%20logistics%20environment%2C%20commercial%20storage%20facility%2C%20pristine%20floors%20and%20high%20ceilings%2C%20professional%20industrial%20setting&width=400&height=300&seq=warehouse001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Clean%20warehouse%20interior%20with%20organized%20storage%20systems%2C%20industrial%20cleaning%20equipment%2C%20large%20open%20spaces%2C%20logistics%20environment%2C%20commercial%20storage%20facility%2C%20pristine%20floors%20and%20high%20ceilings%2C%20professional%20industrial%20setting&width=400&height=300&seq=warehouse001&orientation=landscape")}
                         alt="Warehouses"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
@@ -137,7 +137,7 @@ import TrustSignals from "./TrustSignals.astro";
             <div class="group">
                 <div class="relative overflow-hidden rounded-xl mb-4">
                     <img
-                        src="https://readdy.ai/api/search-image?query=Clean%20manufacturing%20facility%20interior%20with%20industrial%20equipment%2C%20organized%20production%20lines%2C%20safety%20standards%20compliance%2C%20professional%20industrial%20environment%2C%20spotless%20machinery%20and%20work%20areas%2C%20modern%20manufacturing%20setting&width=400&height=300&seq=manufacturing001&orientation=landscape"
+                        src={webp("https://readdy.ai/api/search-image?query=Clean%20manufacturing%20facility%20interior%20with%20industrial%20equipment%2C%20organized%20production%20lines%2C%20safety%20standards%20compliance%2C%20professional%20industrial%20environment%2C%20spotless%20machinery%20and%20work%20areas%2C%20modern%20manufacturing%20setting&width=400&height=300&seq=manufacturing001&orientation=landscape")}
                         alt="Manufacturing"
                         class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />

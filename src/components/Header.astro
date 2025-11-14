@@ -24,7 +24,7 @@ import { contact } from "../data/contact"
                             <details class="group [&amp;_summary::-webkit-details-marker]:hidden rounded-lg hover:bg-primary/10 text-gray-700 hover:text-primary! transition-colors relative">
                                 <summary class="flex cursor-pointer items-center justify-between rounded-lg px-2 lg:px-4 py-2 ">
                                     <span class="flex cursor-pointer items-center justify-between rounded-lg text-xs lg:text-base">
-                                        <a href={link.link}> {link.name} </a>
+                                        <a href={link.link} tabindex="0"> {link.name} </a>
                                     </span>
                                     <span class="shrink-0 transition duration-300 group-open:-rotate-180">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20" fill="currentColor">
@@ -127,7 +127,7 @@ import { contact } from "../data/contact"
                             <details class="group [&amp;_summary::-webkit-details-marker]:hidden">
                                 <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
                                     <span class="flex cursor-pointer items-center justify-between rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                                        <a href={link.link} class="text-sm font-medium"> {link.name} </a>
+                                        <a href={link.link} class="text-sm font-medium" tabindex="0"> {link.name} </a>
                                     </span>
                                     <span class="shrink-0 transition duration-300 group-open:-rotate-180">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20" fill="currentColor">

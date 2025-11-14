@@ -3,9 +3,16 @@ import Home from '../components/Home.astro';
 import Layout from '../layouts/Layout.astro';
 
 const title = "Home | One Stop Cleaning - Family-Owned Cleaning Services";
+const description = "One Stop Cleaning, a family-owned business providing professional cleaning services for 10+ years. Licensed, insured, and trusted by 500+ clients."
 ---
 
 <Layout>
+	<meta name="description" content={description} slot="head" />
+	<meta property="og:title" content={title} slot="head" />
+	<meta property="og:description" content={description} slot="head" />
+	<meta property="og:type" content="website" slot="head" />
+	<link rel="preload" as="image" href="https://readdy.ai/api/search-image?query=Beautiful%20clean%20residential%20home%20interior%20with%20spotless%20living%20room%2C%20organized%20furniture%2C%20pristine%20surfaces%2C%20comfortable%20family%20environment%2C%20domestic%20cleaning%20excellence%2C%20modern%20home%20decor%2C%20welcoming%20living%20space&width=400&height=300&seq=residential001&orientation=landscape" fetchpriority="high" slot="head">
 	<title slot="head">{title}</title>
+
 	<Home />
 </Layout>
